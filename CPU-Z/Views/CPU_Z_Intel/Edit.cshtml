@@ -1,0 +1,118 @@
+﻿@model CPU_Z.Models.CPU_Z_Intel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+<hr />
+<h1>
+    Editar a @Model.Nombre
+</h1>
+<h4>
+    <a href="/CPU_Z_Intel/"><img class="logo" width="50" height="50" src="data:image/png;base64,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" /></a>
+</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Litografia" class="control-label"></label>
+                <input asp-for="Litografia" class="form-control" />
+                <span asp-validation-for="Litografia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Arquitectura" class="control-label"></label>
+                <input asp-for="Arquitectura" class="form-control" />
+                <span asp-validation-for="Arquitectura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fechaLanzamiento" class="control-label"></label>
+                <input asp-for="fechaLanzamiento" class="form-control" />
+                <span asp-validation-for="fechaLanzamiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="precioLanzamiento" class="control-label"></label>
+                <input asp-for="precioLanzamiento" class="form-control" />
+                <span asp-validation-for="precioLanzamiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Socket" class="control-label"></label>
+                <input asp-for="Socket" class="form-control" />
+                <span asp-validation-for="Socket" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nucleos" class="control-label"></label>
+                <input asp-for="Nucleos" class="form-control" />
+                <span asp-validation-for="Nucleos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hilos" class="control-label"></label>
+                <input asp-for="Hilos" class="form-control" />
+                <span asp-validation-for="Hilos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FrecuenciaBase" class="control-label"></label>
+                <input asp-for="FrecuenciaBase" class="form-control" />
+                <span asp-validation-for="FrecuenciaBase" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FrecuenciaTurbo" class="control-label"></label>
+                <input asp-for="FrecuenciaTurbo" class="form-control" />
+                <span asp-validation-for="FrecuenciaTurbo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RelojBase" class="control-label"></label>
+                <input asp-for="RelojBase" class="form-control" />
+                <span asp-validation-for="RelojBase" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MultiplicadorReloj" class="control-label"></label>
+                <input asp-for="MultiplicadorReloj" class="form-control" />
+                <span asp-validation-for="MultiplicadorReloj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cacheL1" class="control-label"></label>
+                <input asp-for="cacheL1" class="form-control" />
+                <span asp-validation-for="cacheL1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cacheL2" class="control-label"></label>
+                <input asp-for="cacheL2" class="form-control" />
+                <span asp-validation-for="cacheL2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cacheL3" class="control-label"></label>
+                <input asp-for="cacheL3" class="form-control" />
+                <span asp-validation-for="cacheL3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RamDDR" class="control-label"></label>
+                <input asp-for="RamDDR" class="form-control" />
+                <span asp-validation-for="RamDDR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imgUrl" class="control-label"></label>
+                <input asp-for="imgUrl" class="form-control" />
+                <span asp-validation-for="imgUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

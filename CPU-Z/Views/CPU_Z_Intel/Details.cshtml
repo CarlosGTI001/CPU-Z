@@ -1,0 +1,125 @@
+﻿@model CPU_Z.Models.CPU_Z_Intel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Informacion Ampliada</h1>
+<hr />
+<h1>
+    @Html.DisplayFor(model => model.Nombre)
+</h1>
+<hr />
+<h4>
+    <a href="/CPU_Z_Intel/"><img class="logo" width="50" height="50" src="data:image/png;base64,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" /></a>
+</h4>
+<hr />
+<div>
+    <div class="row">
+        <div class="col-10">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Litografia)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Litografia)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Arquitectura)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Arquitectura)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.fechaLanzamiento)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.fechaLanzamiento)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.precioLanzamiento)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.precioLanzamiento)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Socket)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Socket)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Nucleos)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Nucleos)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Hilos)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Hilos)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.FrecuenciaBase)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.FrecuenciaBase)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.FrecuenciaTurbo)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.FrecuenciaTurbo)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.RelojBase)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.RelojBase)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MultiplicadorReloj)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MultiplicadorReloj)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.cacheL1)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.cacheL1)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.cacheL2)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.cacheL2)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.cacheL3)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.cacheL3)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.RamDDR)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.RamDDR)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.imgUrl)
+                </dt>
+            </dl>
+        </div>
+        <div class="col-2">
+            <img src="@Html.DisplayFor(model => model.imgUrl)" />
+        </div>
+    </div>
+    <hr />
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

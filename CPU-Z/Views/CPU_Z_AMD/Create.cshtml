@@ -1,0 +1,255 @@
+﻿@using CPU_Z;
+@using Newtonsoft.Json;
+@model CPU_Z.Models.CPU_Z_AMD
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>
+    Ingresar Procesador: <a href="/CPU_Z_AMD/"><img width="40" height="40" class="logo" style="border-color: black; border: 1px solid black" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAclBMVEX///8AAAAbGxv7+/uenp7Q0NCCgoLW1taPj4+xsbG8vLw3NzeMjIz4+PgoKCgiIiJaWlqpqal8fHzu7u4yMjIXFxdxcXG6uro/Pz+ampomJibn5+dKSkqtra3g4OAICAhiYmLFxcURERFXV1dzc3NPT0+3FqlwAAAE7UlEQVR4nO2a61riMBBAWy4iICCichUKuu//ikvBNpNkQlMKu+t+5/zSZlJySjuZpCQJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8YEbDydhhtVpNclon3o4cjux26Yn23x5xbUaHtBY/zzAZvd3BcNkpWW4rYoIBR/pFzP77wFqcuWDaH/Rmt1OMMhzIHlkgyESMgoJlyMv3kW5wYNl0HVasc6NGGW6sLoHrawImgdMInYdKwyPjj1soxhiu7S4PepSI2FSeJsrwSKe5Yozhk9On0jB91walXaUqw7TVa6oYY+j2mVZHLf3216sMg19jtGKE4dzts4u4DnO3+dNqrmFYZiVXcXczw43XaVBtmDp314vdWsewoWK14drvtIgwtFNux2lUDPu9M/v58tmJ1h+LSMVqwwell/b4uzE7ceq926gYWuccLKzwQBExSiOoNjSx5tnOIgzFN7312qoMnSpjHBjbbD5QsL+TSkORZ8RwlFnfv3rFdVAudbWhXZv1q4Yp6VsfVWlobpen5CD+jjAsoiZXGVoX5nA/Q3GDbWW+iDJMT2WXn4vjDJOe6LD3WnOyGxiae3poXVU/vWmGaTdJ3rXjUYayq1YlJc96eVXP0ER+WB/pz/qqYTpbqofjDOVEpQrqNX4tQxGcr4nEfePN+qZJuy1zXls1DUUSUJqfQ6uYWobDMjA7/W+KS2/WN+fsfOiGYoaONBQ3gLeSysuC5oYiz+zdzu6ITMujW6MVHczfkYbKilIKpqvGhmKknkd2wdCps0/Mk/qG4kF0Pu5c2DU3tEZ9QqwVZ5dix67gY3KFoUje9qr6u3LVa50ahiK02DQRV9WZ9W0Zt455t0MiDUWPoSLY3FDLK79M30uGzpJk44TUN5SZrVx7NDUUecbUhXtz0J71HUNr6ddyQxrdpWZx9drQ0M8z9jDtWd81TKbmyOxKQzH/ZopgY0MTJWsmUZwO9OgiK5UV39YLiTQUYy2ferk8bmgo5m3r083hhX64MCwGM/BDIg0z09z3DzU2FAl/1TKsxN6BHJVieE5VSyUkzrAtBlrcB9aWXTPDXlpNVmGYZ4ovLSTOUO7uFMeG4pg9hdQ2/IowlLO+Zpisn4VgXUM5p5b7bbczbKcxiFlfNbSpaShLv7L1dobTNIo7Gsry3eQ0y1Dd1kzspU3QcBVnaGb9WxtaSbOrG04en1xetsnIKopDhjF5JsfM+rc1tO+0zDRYhgqnSy4VQ4Zii+TJf0srVvHKZHedodn1ne3dXWgxygrD73tKKAYMRRrTNvL2prl8FJoatiZnlHdKcsv7smH50BjFgKHIM8qLskTsnJZ3V1PDMF15jouGYi1QKgYMzZ6R/lJbzMXZvQ3tlxaXDOVip12kSt1QfPAvNUBOxt7C4aaGn84ILxjaq7lCUTcUmdp71XlGZqI7Gh68TcuwobtJ3Z6EDeU3FBhszwu5g+FCeRUbNPR34c+KqqF4ygLvX60af3oXw01H/UFNyFB7i3pSVA3Hb8VSSd89yZmnRczbeV+2/D9sWJ52V9Sz3bTlMBkvPt8f+8HPDRjqr4nbrR/4uzbdMPAePBm1/hPDkGCeUoK/QftXea0leCwBf5whAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAf5zck9DmR7X+ULAAAAABJRU5ErkJggg==" /></a>
+</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <div class="input-group">
+                    <input id="Nombre" asp-for="Nombre" class="form-control" />
+                    <span class="input-group-btn">
+                        <input style="margin-left:10px;" id="buscar" class="btn btn-danger" type="submit" value="Buscar Procesador" />
+                    </span>
+                </div>
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Litografia" class="control-label"></label>
+                <input id="Litografia" asp-for="Litografia" class="form-control" />
+                <span asp-validation-for="Litografia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Arquitectura" class="control-label"></label>
+                <input id="Arquitectura" asp-for="Arquitectura" class="form-control" />
+                <span asp-validation-for="Arquitectura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fechaLanzamiento" class="control-label"></label>
+                <input id="fechaLanzamiento" asp-for="fechaLanzamiento" class="form-control" />
+                <span asp-validation-for="fechaLanzamiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="precioLanzamiento" class="control-label"></label>
+                <input id="precioLanzamiento" asp-for="precioLanzamiento" class="form-control" />
+                <span asp-validation-for="precioLanzamiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Socket" class="control-label"></label>
+                <input id="Socket" asp-for="Socket" class="form-control" />
+                <span asp-validation-for="Socket" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nucleos" class="control-label"></label>
+                <input id="Nucleos" asp-for="Nucleos" class="form-control" />
+                <span asp-validation-for="Nucleos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hilos" class="control-label"></label>
+                <input id="Hilos" asp-for="Hilos" class="form-control" />
+                <span asp-validation-for="Hilos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FrecuenciaBase" class="control-label"></label>
+                <input id="FrecuenciaBase" asp-for="FrecuenciaBase" class="form-control" />
+                <span asp-validation-for="FrecuenciaBase" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FrecuenciaTurbo" class="control-label"></label>
+                <input id="FrecuenciaTurbo" asp-for="FrecuenciaTurbo" class="form-control" />
+                <span asp-validation-for="FrecuenciaTurbo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cacheL1" class="control-label"></label>
+                <input id="cacheL1" asp-for="cacheL1" class="form-control" />
+                <span asp-validation-for="cacheL1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cacheL2" class="control-label"></label>
+                <input id="cacheL2" asp-for="cacheL2" class="form-control" />
+                <span asp-validation-for="cacheL2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cacheL3" class="control-label"></label>
+                <input id="cacheL3" asp-for="cacheL3" class="form-control" />
+                <span asp-validation-for="cacheL3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RamDDR" class="control-label"></label>
+                <input id="RamDDR" asp-for="RamDDR" class="form-control" />
+                <span asp-validation-for="RamDDR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="imgUrl" class="control-label"></label>
+                <input id="imgUrl" asp-for="imgUrl" class="form-control" />
+                <span asp-validation-for="imgUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <form asp-action="Create" method="get">
+            <label asp-for="Nombre" class="control-label">Buscar por internet</label>
+            <div class="input-group">
+                <input id="Nombre" asp-for="Nombre" class="form-control" />
+                <span class="input-group-btn">
+                    <input style="margin-left:10px;" id="buscar" class="btn btn-danger" type="submit" value="Buscar Procesador" />
+                </span>
+            </div>
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+<script>
+    var buscar = document.getElementById("buscar").addEventListener("click", function (event) {
+        event.preventDefault();
+        
+        @{
+           string modelo = @Html.DisplayFor(model => model.Nombre).ToString();
+            obtenerLista obtenerList = new obtenerLista();
+        }
+        @{
+            string text = "";
+            if(obtenerList.datos != null)
+            {
+                foreach (string result in obtenerList.datos)
+                {
+                    text = text + result + ",";
+                }
+            }
+        }
+
+        var strin = "@text".split(',');
+        document.getElementById("Nombre").value = strin[13]
+        document.getElementById("Litografia").value = strin[1];
+        document.getElementById("Arquitectura").value = strin[0];
+        var fecha = strin[2];
+        var fechaf = "";
+        if (fecha.length == 18) {
+            fechaf = "0" + fecha[0];
+            var mes = "" + fecha[5] + fecha[6] + fecha[7] + "";
+            var mesNumero;
+            switch (mes) {
+                case 'ene':
+                    mesNumero = "01"
+                    break;
+                case 'feb':
+                    mesNumero = "02"
+                    break;
+                case 'mar':
+                    mesNumero = "03"
+                    break;
+                case 'abr':
+                    mesNumero = "04"
+                    break;
+                case 'may':
+                    mesNumero = "05"
+                    break;
+                case 'jun':
+                    mesNumero = "06"
+                    break;
+                case 'jul':
+                    mesNumero = "07"
+                    break;
+                case 'ago':
+                    mesNumero = "08"
+                    break;
+                case 'sep':
+                    mesNumero = "09"
+                    break;
+                case 'oct':
+                    mesNumero = "10"
+                    break;
+                case 'nov':
+                    mesNumero = "11"
+                    break;
+                case 'dic':
+                    mesNumero = "12"
+                    break;
+            }
+            fechaf = fechaf + "/" + mesNumero + "/" + fecha[14] + fecha[15] + fecha[16] + fecha[17];
+        }
+        if (fecha.length == 9) {
+            fechaf = fecha[0] + fecha[1];
+            var mes = "" + fecha[6] + fecha[7] + fecha[8] + "";
+            var mesNumero;
+            switch (mes) {
+                case 'ene':
+                    mesNumero = "01"
+                    break;
+                case 'feb':
+                    mesNumero = "02"
+                    break;
+                case 'mar':
+                    mesNumero = "03"
+                    break;
+                case 'abr':
+                    mesNumero = "04"
+                    break;
+                case 'may':
+                    mesNumero = "05"
+                    break;
+                case 'jun':
+                    mesNumero = "06"
+                    break;
+                case 'jul':
+                    mesNumero = "07"
+                    break;
+                case 'ago':
+                    mesNumero = "08"
+                    break;
+                case 'sep':
+                    mesNumero = "09"
+                    break;
+                case 'oct':
+                    mesNumero = "10"
+                    break;
+                case 'nov':
+                    mesNumero = "11"
+                    break;
+                case 'dic':
+                    mesNumero = "12"
+                    break;
+            }
+            fechaf = fecha[15] + fecha[16] + fecha[17] + fecha[18] + "/" + mesNumero + "/" + fechaf;
+            
+        }
+        console.log(fechaf);
+        document.getElementById("fechaLanzamiento").value = "";
+        document.getElementById("precioLanzamiento").value = "";
+        document.getElementById("Socket").value = "";
+        document.getElementById("Nucleos").value = "";
+        document.getElementById("Hilos").value = "";
+        document.getElementById("FrecuenciaBase").value = "";
+        document.getElementById("FrecuenciaTurbo").value = "";
+        document.getElementById("cacheL1").value = "";
+        document.getElementById("cacheL2").value = "";
+        document.getElementById("cacheL3").value = "";
+        document.getElementById("RamDDR").value = "";
+        document.getElementById("imgUrl").value = "";
+        console.log(strin);
+    })
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

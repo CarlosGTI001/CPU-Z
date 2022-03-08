@@ -1,0 +1,91 @@
+﻿@model IEnumerable<CPU_Z.Models.CPU_Z_AMD>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>
+    Procesadores: <a href="/CPU_Z_AMD/"><img height="50" width="50" class="logo" style="border-color: black; border: 1px solid black" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAclBMVEX///8AAAAbGxv7+/uenp7Q0NCCgoLW1taPj4+xsbG8vLw3NzeMjIz4+PgoKCgiIiJaWlqpqal8fHzu7u4yMjIXFxdxcXG6uro/Pz+ampomJibn5+dKSkqtra3g4OAICAhiYmLFxcURERFXV1dzc3NPT0+3FqlwAAAE7UlEQVR4nO2a61riMBBAWy4iICCichUKuu//ikvBNpNkQlMKu+t+5/zSZlJySjuZpCQJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8YEbDydhhtVpNclon3o4cjux26Yn23x5xbUaHtBY/zzAZvd3BcNkpWW4rYoIBR/pFzP77wFqcuWDaH/Rmt1OMMhzIHlkgyESMgoJlyMv3kW5wYNl0HVasc6NGGW6sLoHrawImgdMInYdKwyPjj1soxhiu7S4PepSI2FSeJsrwSKe5Yozhk9On0jB91walXaUqw7TVa6oYY+j2mVZHLf3216sMg19jtGKE4dzts4u4DnO3+dNqrmFYZiVXcXczw43XaVBtmDp314vdWsewoWK14drvtIgwtFNux2lUDPu9M/v58tmJ1h+LSMVqwwell/b4uzE7ceq926gYWuccLKzwQBExSiOoNjSx5tnOIgzFN7312qoMnSpjHBjbbD5QsL+TSkORZ8RwlFnfv3rFdVAudbWhXZv1q4Yp6VsfVWlobpen5CD+jjAsoiZXGVoX5nA/Q3GDbWW+iDJMT2WXn4vjDJOe6LD3WnOyGxiae3poXVU/vWmGaTdJ3rXjUYayq1YlJc96eVXP0ER+WB/pz/qqYTpbqofjDOVEpQrqNX4tQxGcr4nEfePN+qZJuy1zXls1DUUSUJqfQ6uYWobDMjA7/W+KS2/WN+fsfOiGYoaONBQ3gLeSysuC5oYiz+zdzu6ITMujW6MVHczfkYbKilIKpqvGhmKknkd2wdCps0/Mk/qG4kF0Pu5c2DU3tEZ9QqwVZ5dix67gY3KFoUje9qr6u3LVa50ahiK02DQRV9WZ9W0Zt455t0MiDUWPoSLY3FDLK79M30uGzpJk44TUN5SZrVx7NDUUecbUhXtz0J71HUNr6ddyQxrdpWZx9drQ0M8z9jDtWd81TKbmyOxKQzH/ZopgY0MTJWsmUZwO9OgiK5UV39YLiTQUYy2ferk8bmgo5m3r083hhX64MCwGM/BDIg0z09z3DzU2FAl/1TKsxN6BHJVieE5VSyUkzrAtBlrcB9aWXTPDXlpNVmGYZ4ovLSTOUO7uFMeG4pg9hdQ2/IowlLO+Zpisn4VgXUM5p5b7bbczbKcxiFlfNbSpaShLv7L1dobTNIo7Gsry3eQ0y1Dd1kzspU3QcBVnaGb9WxtaSbOrG04en1xetsnIKopDhjF5JsfM+rc1tO+0zDRYhgqnSy4VQ4Zii+TJf0srVvHKZHedodn1ne3dXWgxygrD73tKKAYMRRrTNvL2prl8FJoatiZnlHdKcsv7smH50BjFgKHIM8qLskTsnJZ3V1PDMF15jouGYi1QKgYMzZ6R/lJbzMXZvQ3tlxaXDOVip12kSt1QfPAvNUBOxt7C4aaGn84ILxjaq7lCUTcUmdp71XlGZqI7Gh68TcuwobtJ3Z6EDeU3FBhszwu5g+FCeRUbNPR34c+KqqF4ygLvX60af3oXw01H/UFNyFB7i3pSVA3Hb8VSSd89yZmnRczbeV+2/D9sWJ52V9Sz3bTlMBkvPt8f+8HPDRjqr4nbrR/4uzbdMPAePBm1/hPDkGCeUoK/QftXea0leCwBf5whAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAf5zck9DmR7X+ULAAAAABJRU5ErkJggg==" /></a>
+</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Litografia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Arquitectura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaLanzamiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.precioLanzamiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Socket)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nucleos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FrecuenciaBase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cacheL1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RamDDR)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Litografia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Arquitectura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaLanzamiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.precioLanzamiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Socket)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hilos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FrecuenciaBase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cacheL1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RamDDR)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
