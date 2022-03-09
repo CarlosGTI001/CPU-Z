@@ -10,23 +10,26 @@ using CPU_Z.Models;
 using HtmlAgilityPack;
 using System.IO;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 
 namespace CPU_Z.Controllers
 {
     public class api : Controller
     {
-        public string request(string nombre, string marca){
+        public ActionResult request(string nombre, string marca){
+            
+            List<string> lista =  obtenerDetalles.WebDataScrap(nombre, marca);
+            /*
             string da = "";
             int contador = 0;
-            List<string> lista =  obtenerDetalles.WebDataScrap(nombre, marca);
             foreach(string dt in lista){
                 da += dt;
                 if(contador < lista.Count-1)
                 da += ",";
                 contador++;
-            }
-            return da;
+            }*/
+            return Json(lista);
         }    
     }
 }    

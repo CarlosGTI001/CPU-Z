@@ -111,28 +111,17 @@
 <script>
     var buscar = document.getElementById("buscar").addEventListener("click", function (event) {
         event.preventDefault();
-        
-        // Getting the HTML
-                async function FetchHtml() 
-                {
-                    let response = await fetch('http://localhost:5000/api/request?nombre='+document.getElementById('nombre').value+'ryzen-7-5700g&marca=amd');
-                    return await response.text(); // Returns it as Promise
-                }
-        
-                var text = "";
-                // Usaing the HTML
-                async function Do()
-                {
-                   let html = await FetchHtml().then(text => {return text}); // Get html from the promise
-                    alert(html);
-                }
+        var name = document.getElementById('Nombre').value;
+        var results = "";
         
         
-                // Exe
-                Do();
-        
-
-        var strin = text.split(',');
+        fetch("http://localhost:5000/api/request?nombre=ryzen-7-5700g&marca=amd")
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                 var strin = data;
         console.log(strin);
         document.getElementById("Litografia").value = strin[1];
         document.getElementById("Arquitectura").value = strin[0];
@@ -241,6 +230,12 @@
         document.getElementById("RamDDR").value = "";
         document.getElementById("imgUrl").value = "";
         console.log(strin);
+    
+            })
+            .catch(error => {
+                console.log("失敗しました");
+        });
+        
     })
 </script>
 
