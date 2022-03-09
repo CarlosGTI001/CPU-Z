@@ -50,26 +50,9 @@ namespace CPU_Z.Controllers
         // GET: CPU_Z_AMD/Create
         
 
-        public IActionResult Create(CPU_Z_AMD model, string Nombre = "")
+        public IActionResult Create()
         {
-
-            model.Nombre = Nombre;
-            model.Arquitectura = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-            model.Litografia = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-
-            model.fechaLanzamiento = 
-            model. = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-            model. = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-            model. = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-            model. = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-            model. = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-            model. = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-            model. = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-            model. = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-            model. = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-            model. = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-            model. = obtenerDetalles.WebDataScrap(Nombre, "amd")[0];
-            return View(model);
+            return View();
         }
 
         // POST: CPU_Z_AMD/Create

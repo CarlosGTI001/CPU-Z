@@ -112,18 +112,27 @@
     var buscar = document.getElementById("buscar").addEventListener("click", function (event) {
         event.preventDefault();
         
+        // Getting the HTML
+                async function FetchHtml() 
+                {
+                    let response = await fetch('http://localhost:5000/api/request?nombre='+document.getElementById('nombre').value+'ryzen-7-5700g&marca=amd');
+                    return await response.text(); // Returns it as Promise
+                }
         
-        @{
-            var httpClient = new HttpClient();
-            var message = await httpClient.GetAsync("http://localhost:5000/api/request?nombre=ryzen-7-5700g&marca=amd");
-            string HTML = "";
-            if (message.StatusCode == HttpStatusCode.OK)
-            {
-                HTML = await message.Content.ReadAsStringAsync();
-            }
-        }
+                var text = "";
+                // Usaing the HTML
+                async function Do()
+                {
+                   let html = await FetchHtml().then(text => {return text}); // Get html from the promise
+                    alert(html);
+                }
+        
+        
+                // Exe
+                Do();
+        
 
-        var strin = "@HTML".split(',');
+        var strin = text.split(',');
         console.log(strin);
         document.getElementById("Litografia").value = strin[1];
         document.getElementById("Arquitectura").value = strin[0];
