@@ -1,5 +1,7 @@
 ﻿@using CPU_Z;
 @using Newtonsoft.Json;
+@using System.Net.Http
+@using System.Net
 @model CPU_Z.Models.CPU_Z_AMD
 
 @{
@@ -99,18 +101,6 @@
             </div>
         </form>
     </div>
-    <div class="col-md-4">
-        <form asp-action="Create" method="get">
-            <label asp-for="Nombre" class="control-label">Buscar por internet</label>
-            <div class="input-group">
-                <input id="Nombre" asp-for="Nombre" class="form-control" />
-                <span class="input-group-btn">
-                    <input style="margin-left:10px;" id="buscar" class="btn btn-danger" type="submit" value="Buscar Procesador" />
-                </span>
-            </div>
-            <span asp-validation-for="Nombre" class="text-danger"></span>
-        </form>
-    </div>
 </div>
 
 <div>
@@ -122,23 +112,19 @@
     var buscar = document.getElementById("buscar").addEventListener("click", function (event) {
         event.preventDefault();
         
+        
         @{
-           string modelo = @Html.DisplayFor(model => model.Nombre).ToString();
-            obtenerLista obtenerList = new obtenerLista();
-        }
-        @{
-            string text = "";
-            if(obtenerList.datos != null)
+            var httpClient = new HttpClient();
+            var message = await httpClient.GetAsync("http://localhost:5000/api/request?nombre=ryzen-7-5700g&marca=amd");
+            string HTML = "";
+            if (message.StatusCode == HttpStatusCode.OK)
             {
-                foreach (string result in obtenerList.datos)
-                {
-                    text = text + result + ",";
-                }
+                HTML = await message.Content.ReadAsStringAsync();
             }
         }
 
-        var strin = "@text".split(',');
-        document.getElementById("Nombre").value = strin[13]
+        var strin = "@HTML".split(',');
+        console.log(strin);
         document.getElementById("Litografia").value = strin[1];
         document.getElementById("Arquitectura").value = strin[0];
         var fecha = strin[2];
