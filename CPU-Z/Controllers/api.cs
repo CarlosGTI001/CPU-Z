@@ -83,7 +83,7 @@ namespace CPU_Z.Controllers
                     }
                     yyyy = int.Parse("" + fechaf[15] + fechaf[16] + fechaf[17] + fechaf[18] + "");
                     mm = mesNumero;
-                    dd = int.Parse("0" + fechaf[1]);
+                    dd = int.Parse("0" + fechaf[0]);
                     precio = decimal.Parse(list[3]);
                     socket = list[4];
                     if (int.TryParse(list[6], out nucleos))
@@ -282,7 +282,7 @@ namespace CPU_Z.Controllers
                     }
                     yyyy = int.Parse("" + fechaf[14] + fechaf[15] + fechaf[16] + fechaf[17] + "");
                     mm = mesNumero;
-                    dd = int.Parse("0" + fechaf[1]);
+                    dd = int.Parse("0" + fechaf[0]);
                     if (list[3] != "")
                     {
                         string p1 = list[3].Replace("$", string.Empty);

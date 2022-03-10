@@ -117,65 +117,80 @@
 <script>
     var buscar = document.getElementById("buscar").addEventListener("click", function (event) {
         event.preventDefault();
-        var name = document.getElementById('Nombre').value;
+        if (document.getElementById('Nombre').value == "") {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Si deseas buscar un procesador, ingresa su nombre primero.',
+                icon: 'alert',
+                confirmButtonText: 'Ok'
+            });
+        } else {
+           var name = document.getElementById('Nombre').value;
 
 
+            fetch("../api/request?nombre=" + name + "&marca=intel")
+                .then(response => {
+                    console.log(response);
+                    return response.json();
 
-        fetch("../api/request?nombre=" + name + "&marca=intel")
-            .then(response => {
-                console.log(response);
-                return response.json();
+                })
+                .then(obj => {
+                    var data = JSON.parse(obj);
+                    console.log(data);
+                    document.getElementById("Litografia").value = data['Litografia'];
+                    document.getElementById("Arquitectura").value = data['Arquitectura'];
+                    var dateD = data['fechaLanzamiento'];
 
-            })
-            .then(obj => {
-                var data = JSON.parse(obj);
-                console.log(data);
-                document.getElementById("Litografia").value = data['Litografia'];
-                document.getElementById("Arquitectura").value = data['Arquitectura'];
-                var dateD = new Date(data['fechaLanzamiento']);
+                    var dateString = "" + dateD[0] + dateD[1] + dateD[2] + dateD[3] + "-";
+                    if (dateD[5] == "-") {
+                        dateString = dateString + "0" + dateD[4];
+                    } else {
+                        dateString = dateString + dateD[4] + dateD[5];
+                    }
+                    if (dateD[8] == "T") {
+                        console.log("T");
+                    }
+                    console.log(dateString);
 
-                var date = dateD.getDate();
-                var month = dateD.getMonth(); //Be careful! January is 0 not 1
-                var year = dateD.getFullYear();
 
-                var dateString = year + "-" + "0"+(month + 1) + "-" + date;
-                document.getElementById("fechaLanzamiento").value = dateString;
+                    document.getElementById("fechaLanzamiento").value = dateString;
 
-                document.getElementById("precioLanzamiento").value = data['precioLanzamiento'];
-                document.getElementById("Socket").value = data['Socket'];
+                    document.getElementById("precioLanzamiento").value = data['precioLanzamiento'];
+                    document.getElementById("Socket").value = data['Socket'];
 
-                document.getElementById("Nucleos").value = data['Nucleos'];
+                    document.getElementById("Nucleos").value = data['Nucleos'];
 
-                document.getElementById("Hilos").value = data['Hilos'];
-                document.getElementById("FrecuenciaBase").value = data['FrecuenciaBase'];
-                document.getElementById("FrecuenciaTurbo").value = data['FrecuenciaTurbo'];
-                document.getElementById("RelojBase").value = data['RelojBase'];
-                document.getElementById("MultiplicadorReloj").value = data['MultiplicadorReloj'];
+                    document.getElementById("Hilos").value = data['Hilos'];
+                    document.getElementById("FrecuenciaBase").value = data['FrecuenciaBase'];
+                    document.getElementById("FrecuenciaTurbo").value = data['FrecuenciaTurbo'];
+                    document.getElementById("RelojBase").value = data['RelojBase'];
+                    document.getElementById("MultiplicadorReloj").value = data['MultiplicadorReloj'];
 
-                document.getElementById("cacheL1").value = data['cacheL1'];
-                document.getElementById("cacheL2").value = data['cacheL2'];
-                document.getElementById("cacheL3").value = data['cacheL3'];
-                document.getElementById("RamDDR").value = data['RamDDR'];
-                document.getElementById("imgUrl").value = data['imgUrl'];
-                if (data['Arquitectura'] = "") {
+                    document.getElementById("cacheL1").value = data['cacheL1'];
+                    document.getElementById("cacheL2").value = data['cacheL2'];
+                    document.getElementById("cacheL3").value = data['cacheL3'];
+                    document.getElementById("RamDDR").value = data['RamDDR'];
+                    document.getElementById("imgUrl").value = data['imgUrl'];
+                    if (data['Arquitectura'] = "") {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'No se pudo encontrar el procesador! Verifica que exista o Verifica tu conexion a internet, en dicho caso, puedes ingresarlo manualmente al sistema.',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        })
+                    }
+                    document.getElementById("actualizar").src = document.getElementById("imgUrl").value;
+                })
+                .catch(error => {
                     Swal.fire({
                         title: 'Error!',
                         text: 'No se pudo encontrar el procesador! Verifica que exista o Verifica tu conexion a internet, en dicho caso, puedes ingresarlo manualmente al sistema.',
                         icon: 'error',
                         confirmButtonText: 'Ok'
                     })
-                }
-                document.getElementById("actualizar").src = document.getElementById("imgUrl").value;
-            })
-            .catch(error => {
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'No se pudo encontrar el procesador! Verifica que exista o Verifica tu conexion a internet, en dicho caso, puedes ingresarlo manualmente al sistema.',
-                    icon: 'error',
-                    confirmButtonText: 'Ok'
-                })
-            });
+                });
 
+        }
     })
 </script>
 @section Scripts {
