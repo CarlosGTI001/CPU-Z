@@ -10,7 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace CPU_Z { 
+namespace CPU_Z
+{
     public class obtenerDetalles
     {
         public static List<string> WebDataScrap(string procesador, string marca)
@@ -21,10 +22,6 @@ namespace CPU_Z {
             {
                 string url = "https://www.geektopia.es/es/";
                 //Get the content of the URL from the Web
-                if(procesador == "")
-                {
-                    goto exit;
-                }
                 if (marca == "amd")
                 {
                     //15 campos
@@ -56,7 +53,7 @@ namespace CPU_Z {
                     int contador = 0;
                     foreach (var node in nodes)
                     {
-                        if (contador < 15)
+                        if (contador < 17)
                         {
                             //Get the country name
                             var splittedWords = Regex.Split(node.InnerText, "\n");
@@ -162,7 +159,6 @@ namespace CPU_Z {
                 {
                     goto stop;
                 }
-            exit:
                 return list;
             }
             catch (Exception ex)

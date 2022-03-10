@@ -106,6 +106,9 @@
             </div>
         </form>
     </div>
+    <div class="col-md-2">
+        <img id="actualizar" src="" />
+    </div>
 </div>
 
 <div>
@@ -115,178 +118,40 @@
     var buscar = document.getElementById("buscar").addEventListener("click", function (event) {
         event.preventDefault();
         var name = document.getElementById('Nombre').value;
-        var results = "";
 
 
-        fetch("../api/request?nombre=" + name + "&marca=amd")
+
+        fetch("../api/request?nombre=" + name + "&marca=intel")
             .then(response => {
+                console.log(response);
                 return response.json();
+
             })
-            .then(data => {
+            .then(obj => {
+                var data = JSON.parse(obj);
                 console.log(data);
-                var strin = data;
-                document.getElementById("Litografia").value = strin[1];
-                document.getElementById("Arquitectura").value = strin[0];
-                var fecha = strin[2];
-                console.log(fecha);
-                var fechaf = fecha.split("");
-                if (fecha.length == 18) {
-                    fechaf = "0" + fecha[0];
-                    var mes = "" + fecha[5] + fecha[6] + fecha[7] + "";
-                    var mesNumero;
-                    switch (mes) {
-                        case 'ene':
-                            mesNumero = "01"
-                            break;
-                        case 'feb':
-                            mesNumero = "02"
-                            break;
-                        case 'mar':
-                            mesNumero = "03"
-                            break;
-                        case 'abr':
-                            mesNumero = "04"
-                            break;
-                        case 'may':
-                            mesNumero = "05"
-                            break;
-                        case 'jun':
-                            mesNumero = "06"
-                            break;
-                        case 'jul':
-                            mesNumero = "07"
-                            break;
-                        case 'ago':
-                            mesNumero = "08"
-                            break;
-                        case 'sep':
-                            mesNumero = "09"
-                            break;
-                        case 'oct':
-                            mesNumero = "10"
-                            break;
-                        case 'nov':
-                            mesNumero = "11"
-                            break;
-                        case 'dic':
-                            mesNumero = "12"
-                            break;
-                    }
-                    fechaf = fecha[14] + fecha[15] + fecha[16] + fecha[17] + "-" + mesNumero + "-" + fechaf;
+                document.getElementById("Litografia").value = data['Litografia'];
+                document.getElementById("Arquitectura").value = data['Arquitectura'];
 
-                }
-                if (fecha.length == 19) {
-                    fechaf = fecha[0] + fecha[1];
-                    var mes = "" + fecha[6] + fecha[7] + fecha[8] + "";
-                    var mesNumero;
-                    switch (mes) {
-                        case 'ene':
-                            mesNumero = "01"
-                            break;
-                        case 'feb':
-                            mesNumero = "02"
-                            break;
-                        case 'mar':
-                            mesNumero = "03"
-                            break;
-                        case 'abr':
-                            mesNumero = "04"
-                            break;
-                        case 'may':
-                            mesNumero = "05"
-                            break;
-                        case 'jun':
-                            mesNumero = "06"
-                            break;
-                        case 'jul':
-                            mesNumero = "07"
-                            break;
-                        case 'ago':
-                            mesNumero = "08"
-                            break;
-                        case 'sep':
-                            mesNumero = "09"
-                            break;
-                        case 'oct':
-                            mesNumero = "10"
-                            break;
-                        case 'nov':
-                            mesNumero = "11"
-                            break;
-                        case 'dic':
-                            mesNumero = "12"
-                            break;
-                    }
-                    fechaf = fecha[15] + fecha[16] + fecha[17] + fecha[18] + "-" + mesNumero + "-" + fechaf;
+                document.getElementById("fechaLanzamiento").value = data['fechaLanzamiento'];
 
-                }
-                console.log(fechaf);
-                document.getElementById("fechaLanzamiento").value = fechaf;
-                var precio = 0;
-                var precioTemporal = "";
-                var precioString = strin[3].split("");
-                for (var i = 0; i < precioString.length; i++) {
-                    if (!isNaN(precioString[i])) {
-                        precioTemporal += '' + precioString[i] + '';
-                        console.log(precioString[i]);
-                    }
-                    else if (precioString[i] = "$") {
-                        document.getElementById("precioLanzamiento").value = precioTemporal.replace(" ", "");
-                    }
-                    else {
-                        if (precioString[i] = ' ') {
-                            continue;
-                        } else {
-                            document.getElementById("precioLanzamiento").value = 0;
-                        }
-                    }
-                }
+                document.getElementById("precioLanzamiento").value = data['precioLanzamiento'];
+                document.getElementById("Socket").value = data['Socket'];
 
-                document.getElementById("Socket").value = strin[4];
-                document.getElementById("Nucleos").value = strin[5];
-                if (isNaN(strin[6])) {
-                    document.getElementById("Hilos").value = strin[5];
-                    document.getElementById("FrecuenciaBase").value = strin[6];;
-                    document.getElementById("FrecuenciaTurbo").value = strin[7];
-                    var cacheL3 = "";
-                    cacheL3 = strin[10];
-                    if (cacheL3.includes("KB")) {
-                        document.getElementById("cacheL1").value = strin[8];
-                        document.getElementById("cacheL2").value = strin[9];
-                        document.getElementById("cacheL3").value = strin[10];
-                        document.getElementById("RamDDR").value = strin[11];
-                        document.getElementById("imgUrl").value = strin[12];
-                    } else {
-                        document.getElementById("cacheL1").value = "";
-                        document.getElementById("cacheL2").value = strin[8];
-                        document.getElementById("cacheL3").value = strin[9];
-                        document.getElementById("RamDDR").value = strin[10];
-                        document.getElementById("imgUrl").value = strin[11];
-                    }
+                document.getElementById("Nucleos").value = data['Nucleos'];
 
+                document.getElementById("Hilos").value = data['Hilos'];
+                document.getElementById("FrecuenciaBase").value = data['FrecuenciaBase'];
+                document.getElementById("FrecuenciaTurbo").value = data['FrecuenciaTurbo'];
+                document.getElementById("RelojBase").value = data['RelojBase'];
+                document.getElementById("MultiplicadorReloj").value = data['MultiplicadorReloj'];
 
-                } else {
-                    document.getElementById("Hilos").value = strin[6];
-                    document.getElementById("FrecuenciaBase").value = strin[7];;
-                    document.getElementById("FrecuenciaTurbo").value = strin[8];
-                    var cacheL3 = "";
-                    cacheL3 = strin[11];
-                    if (cacheL3.includes("KB")) {
-                        document.getElementById("cacheL1").value = strin[9];
-                        document.getElementById("cacheL2").value = strin[10];
-                        document.getElementById("cacheL3").value = strin[11];
-                        document.getElementById("RamDDR").value = strin[12];
-                        document.getElementById("imgUrl").value = strin[13];
-                    } else {
-                        document.getElementById("cacheL1").value = "";
-                        document.getElementById("cacheL2").value = strin[9];
-                        document.getElementById("cacheL3").value = strin[10];
-                        document.getElementById("RamDDR").value = strin[11];
-                        document.getElementById("imgUrl").value = strin[12];
-                    }
-
-                }
-                if (!strin.length > 0) {
+                document.getElementById("cacheL1").value = data['cacheL1'];
+                document.getElementById("cacheL2").value = data['cacheL2'];
+                document.getElementById("cacheL3").value = data['cacheL3'];
+                document.getElementById("RamDDR").value = data['RamDDR'];
+                document.getElementById("imgUrl").value = data['imgUrl'];
+                if (data['Arquitectura'] = "") {
                     Swal.fire({
                         title: 'Error!',
                         text: 'No se pudo encontrar el procesador! Verifica que exista o Verifica tu conexion a internet, en dicho caso, puedes ingresarlo manualmente al sistema.',
@@ -299,7 +164,7 @@
             .catch(error => {
                 Swal.fire({
                     title: 'Error!',
-                    text: '' + error + '',
+                    text: 'No se pudo encontrar el procesador! Verifica que exista o Verifica tu conexion a internet, en dicho caso, puedes ingresarlo manualmente al sistema.',
                     icon: 'error',
                     confirmButtonText: 'Ok'
                 })
