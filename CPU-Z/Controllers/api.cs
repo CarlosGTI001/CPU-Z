@@ -291,6 +291,7 @@ namespace CPU_Z.Controllers
                     }
                     else
                         precio = 0;
+                    socket = list[4];
                 }
 
                 if (fecha.Length == 19)
@@ -348,7 +349,7 @@ namespace CPU_Z.Controllers
                     else
                         precio = 0;
                 }
-                socket = list[4];
+                socket = list[5];
                 if (int.TryParse(list[6], out nucleos))
                 {
 

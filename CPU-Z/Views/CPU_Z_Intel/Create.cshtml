@@ -132,8 +132,14 @@
                 console.log(data);
                 document.getElementById("Litografia").value = data['Litografia'];
                 document.getElementById("Arquitectura").value = data['Arquitectura'];
+                var dateD = new Date(data['fechaLanzamiento']);
 
-                document.getElementById("fechaLanzamiento").value = data['fechaLanzamiento'];
+                var date = dateD.getDate();
+                var month = dateD.getMonth(); //Be careful! January is 0 not 1
+                var year = dateD.getFullYear();
+
+                var dateString = year + "-" + "0"+(month + 1) + "-" + date;
+                document.getElementById("fechaLanzamiento").value = dateString;
 
                 document.getElementById("precioLanzamiento").value = data['precioLanzamiento'];
                 document.getElementById("Socket").value = data['Socket'];
